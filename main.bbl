@@ -1,0 +1,389 @@
+%%% -*-BibTeX-*-
+%%% Do NOT edit. File created by BibTeX with style
+%%% ACM-Reference-Format-Journals [18-Jan-2012].
+
+\begin{thebibliography}{26}
+
+%%% ====================================================================
+%%% NOTE TO THE USER: you can override these defaults by providing
+%%% customized versions of any of these macros before the \bibliography
+%%% command.  Each of them MUST provide its own final punctuation,
+%%% except for \shownote{} and \showURL{}.  The latter two
+%%% do not use final punctuation, in order to avoid confusing it with
+%%% the Web address.
+%%%
+%%% To suppress output of a particular field, define its macro to expand
+%%% to an empty string, or better, \unskip, like this:
+%%%
+%%% \newcommand{\showURL}[1]{\unskip}   % LaTeX syntax
+%%%
+%%% \def \showURL #1{\unskip}           % plain TeX syntax
+%%%
+%%% ====================================================================
+
+\ifx \showCODEN    \undefined \def \showCODEN     #1{\unskip}     \fi
+\ifx \showISBNx    \undefined \def \showISBNx     #1{\unskip}     \fi
+\ifx \showISBNxiii \undefined \def \showISBNxiii  #1{\unskip}     \fi
+\ifx \showISSN     \undefined \def \showISSN      #1{\unskip}     \fi
+\ifx \showLCCN     \undefined \def \showLCCN      #1{\unskip}     \fi
+\ifx \shownote     \undefined \def \shownote      #1{#1}          \fi
+\ifx \showarticletitle \undefined \def \showarticletitle #1{#1}   \fi
+\ifx \showURL      \undefined \def \showURL       {\relax}        \fi
+% The following commands are used for tagged output and should be
+% invisible to TeX
+\providecommand\bibfield[2]{#2}
+\providecommand\bibinfo[2]{#2}
+\providecommand\natexlab[1]{#1}
+\providecommand\showeprint[2][]{arXiv:#2}
+
+\bibitem[Ball and Knoepfle(2023)]%
+        {ball2023timing}
+\bibfield{author}{\bibinfo{person}{Ian Ball} {and} \bibinfo{person}{Jan
+  Knoepfle}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \bibinfo{title}{Should the Timing of Inspections be Predictable?}
+\newblock
+\showeprint[arxiv]{2304.01385}~[econ.TH]
+
+
+\bibitem[Basu and Das(2025)]%
+        {basu2025fairgame}
+\bibfield{author}{\bibinfo{person}{Debabrota Basu} {and} \bibinfo{person}{Udvas
+  Das}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{The Fair Game: Auditing \& Debiasing {AI}
+  Algorithms Over Time}.
+\newblock \bibinfo{journal}{\emph{Cambridge Forum on AI: Law and Governance}}
+  \bibinfo{volume}{1} (\bibinfo{year}{2025}), \bibinfo{pages}{e27}.
+\newblock
+\href{https://doi.org/10.1017/cfl.2025.16}{doi:\nolinkurl{10.1017/cfl.2025.16}}
+
+
+\bibitem[Becker(1968)]%
+        {becker1968crime}
+\bibfield{author}{\bibinfo{person}{Gary~S. Becker}.}
+  \bibinfo{year}{1968}\natexlab{}.
+\newblock \showarticletitle{Crime and Punishment: An Economic Approach}.
+\newblock \bibinfo{journal}{\emph{Journal of Political Economy}}
+  \bibinfo{volume}{76}, \bibinfo{number}{2} (\bibinfo{year}{1968}),
+  \bibinfo{pages}{169--217}.
+\newblock
+\href{https://doi.org/10.1086/259394}{doi:\nolinkurl{10.1086/259394}}
+
+
+\bibitem[Black et~al\mbox{.}(2022)]%
+        {black2022model}
+\bibfield{author}{\bibinfo{person}{Emily Black}, \bibinfo{person}{Manish
+  Raghavan}, {and} \bibinfo{person}{Solon Barocas}.}
+  \bibinfo{year}{2022}\natexlab{}.
+\newblock \showarticletitle{Model Multiplicity: Opportunities, Concerns, and
+  Solutions}. In \bibinfo{booktitle}{\emph{Proceedings of the 2022 ACM
+  Conference on Fairness, Accountability, and Transparency}}
+  \emph{(\bibinfo{series}{FAccT '22})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{850--863}.
+\newblock
+\href{https://doi.org/10.1145/3531146.3533149}{doi:\nolinkurl{10.1145/3531146.3533149}}
+
+
+\bibitem[Bromley and Powell(2012)]%
+        {bromley2012smoke}
+\bibfield{author}{\bibinfo{person}{Patricia Bromley} {and}
+  \bibinfo{person}{Walter~W. Powell}.} \bibinfo{year}{2012}\natexlab{}.
+\newblock \showarticletitle{From Smoke and Mirrors to Walking the Talk:
+  Decoupling in the Contemporary World}.
+\newblock \bibinfo{journal}{\emph{The Academy of Management Annals}}
+  \bibinfo{volume}{6}, \bibinfo{number}{1} (\bibinfo{year}{2012}),
+  \bibinfo{pages}{483--530}.
+\newblock
+\href{https://doi.org/10.5465/19416520.2012.684462}{doi:\nolinkurl{10.5465/19416520.2012.684462}}
+
+
+\bibitem[Che et~al\mbox{.}(2024)]%
+        {che2024datadriven}
+\bibfield{author}{\bibinfo{person}{Yeon-Koo Che}, \bibinfo{person}{Jinwoo Kim},
+  {and} \bibinfo{person}{Konrad Mierendorff}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Data-Driven Monitoring and Deterrence in a Changing
+  Environment}.
+\newblock
+\showeprint[arxiv]{2405.04764}~[econ.TH]
+
+
+\bibitem[De~Toni et~al\mbox{.}(2025)]%
+        {detoni2025time}
+\bibfield{author}{\bibinfo{person}{Giovanni De~Toni}, \bibinfo{person}{Stefano
+  Teso}, \bibinfo{person}{Bruno Lepri}, {and} \bibinfo{person}{Andrea
+  Passerini}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Time Can Invalidate Algorithmic Recourse}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2025 ACM Conference on Fairness,
+  Accountability, and Transparency}} \emph{(\bibinfo{series}{FAccT '25})}.
+  \bibinfo{publisher}{Association for Computing Machinery},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{89--107}.
+\newblock
+\href{https://doi.org/10.1145/3715275.3732008}{doi:\nolinkurl{10.1145/3715275.3732008}}
+
+
+\bibitem[Edelman(1992)]%
+        {edelman1992legal}
+\bibfield{author}{\bibinfo{person}{Lauren~B. Edelman}.}
+  \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Legal Ambiguity and Symbolic Structures:
+  Organizational Mediation of Civil Rights Law}.
+\newblock \bibinfo{journal}{\emph{Amer. J. Sociology}} \bibinfo{volume}{97},
+  \bibinfo{number}{6} (\bibinfo{year}{1992}), \bibinfo{pages}{1531--1576}.
+\newblock
+\href{https://doi.org/10.1086/229939}{doi:\nolinkurl{10.1086/229939}}
+
+
+\bibitem[{European Parliament and Council of the European Union}(2024)]%
+        {euaiact2024}
+\bibfield{author}{\bibinfo{person}{{European Parliament and Council of the
+  European Union}}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \bibinfo{title}{Regulation (EU) 2024/1689 of the European Parliament
+  and of the Council of 13 June 2024 Laying Down Harmonised Rules on Artificial
+  Intelligence (Artificial Intelligence Act)}.
+\newblock
+\shownote{OJ L, 2024/1689, 12.7.2024}.
+\newblock
+\urldef\tempurl%
+\url{https://eur-lex.europa.eu/eli/reg/2024/1689/oj/eng}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Fernandes and Phelan(2000)]%
+        {fernandes2000recursive}
+\bibfield{author}{\bibinfo{person}{Ana Fernandes} {and}
+  \bibinfo{person}{Christopher Phelan}.} \bibinfo{year}{2000}\natexlab{}.
+\newblock \showarticletitle{A Recursive Formulation for Repeated Agency with
+  History Dependence}.
+\newblock \bibinfo{journal}{\emph{Journal of Economic Theory}}
+  \bibinfo{volume}{91}, \bibinfo{number}{2} (\bibinfo{year}{2000}),
+  \bibinfo{pages}{223--247}.
+\newblock
+\href{https://doi.org/10.1006/jeth.1999.2619}{doi:\nolinkurl{10.1006/jeth.1999.2619}}
+
+
+\bibitem[Garcia~Bourr{\'e}e et~al\mbox{.}(2025)]%
+        {garciabourree2025robust}
+\bibfield{author}{\bibinfo{person}{Jade Garcia~Bourr{\'e}e},
+  \bibinfo{person}{Augustin Godinot}, \bibinfo{person}{Martijn De~Vos},
+  \bibinfo{person}{Milos Vujasinovic}, \bibinfo{person}{Sayan Biswas},
+  \bibinfo{person}{Gilles Tredan}, \bibinfo{person}{Erwan Le~Merrer}, {and}
+  \bibinfo{person}{Anne-Marie Kermarrec}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \bibinfo{title}{Robust {ML} Auditing using Prior Knowledge}.
+\newblock
+\shownote{Proceedings of the 42nd International Conference on Machine Learning
+  (ICML 2025)}.
+\newblock
+\showeprint[arxiv]{2505.04796}~[cs.LG]
+
+
+\bibitem[Gerchick et~al\mbox{.}(2025)]%
+        {gerchick2025auditing}
+\bibfield{author}{\bibinfo{person}{Marissa~Kumar Gerchick}, \bibinfo{person}{Ro
+  Encarnaci{\'o}n}, \bibinfo{person}{Cole Tanigawa-Lau}, \bibinfo{person}{Lena
+  Armstrong}, \bibinfo{person}{Ana Guti{\'e}rrez}, {and}
+  \bibinfo{person}{Dana{\'e} Metaxa}.} \bibinfo{year}{2025}\natexlab{}.
+\newblock \showarticletitle{Auditing the Audits: Lessons for Algorithmic
+  Accountability from Local Law 144's Bias Audits}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2025 ACM Conference on Fairness,
+  Accountability, and Transparency}} \emph{(\bibinfo{series}{FAccT '25})}.
+  \bibinfo{publisher}{Association for Computing Machinery},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{29--44}.
+\newblock
+\href{https://doi.org/10.1145/3715275.3732004}{doi:\nolinkurl{10.1145/3715275.3732004}}
+
+
+\bibitem[Gray and Mendeloff(2005)]%
+        {gray2004declining}
+\bibfield{author}{\bibinfo{person}{Wayne~B. Gray} {and}
+  \bibinfo{person}{John~M. Mendeloff}.} \bibinfo{year}{2005}\natexlab{}.
+\newblock \showarticletitle{The Declining Effects of {OSHA} Inspections on
+  Manufacturing Injuries, 1979 to 1998}.
+\newblock \bibinfo{journal}{\emph{Industrial and Labor Relations Review}}
+  \bibinfo{volume}{58}, \bibinfo{number}{4} (\bibinfo{year}{2005}),
+  \bibinfo{pages}{571--587}.
+\newblock
+
+
+\bibitem[Groves et~al\mbox{.}(2024)]%
+        {groves2024auditing}
+\bibfield{author}{\bibinfo{person}{Lara Groves}, \bibinfo{person}{Jacob
+  Metcalf}, \bibinfo{person}{Alayna Kennedy}, \bibinfo{person}{Briana
+  Vecchione}, {and} \bibinfo{person}{Andrew Strait}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Auditing Work: Exploring the New York City
+  Algorithmic Bias Audit Regime}. In \bibinfo{booktitle}{\emph{Proceedings of
+  the 2024 ACM Conference on Fairness, Accountability, and Transparency}}
+  \emph{(\bibinfo{series}{FAccT '24})}. \bibinfo{publisher}{Association for
+  Computing Machinery}, \bibinfo{address}{New York, NY, USA},
+  \bibinfo{pages}{1107--1120}.
+\newblock
+\href{https://doi.org/10.1145/3630106.3658959}{doi:\nolinkurl{10.1145/3630106.3658959}}
+
+
+\bibitem[Halac and Prat(2016)]%
+        {halac2016managerial}
+\bibfield{author}{\bibinfo{person}{Marina Halac} {and} \bibinfo{person}{Andrea
+  Prat}.} \bibinfo{year}{2016}\natexlab{}.
+\newblock \showarticletitle{Managerial Attention and Worker Performance}.
+\newblock \bibinfo{journal}{\emph{American Economic Review}}
+  \bibinfo{volume}{106}, \bibinfo{number}{10} (\bibinfo{year}{2016}),
+  \bibinfo{pages}{3104--3132}.
+\newblock
+\href{https://doi.org/10.1257/aer.20140772}{doi:\nolinkurl{10.1257/aer.20140772}}
+
+
+\bibitem[Huang and Zhu(2024)]%
+        {huang2024zetar}
+\bibfield{author}{\bibinfo{person}{Linan Huang} {and} \bibinfo{person}{Quanyan
+  Zhu}.} \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{{ZETAR}: Modeling and Computational Design of
+  Strategic and Adaptive Compliance Policies}.
+\newblock \bibinfo{journal}{\emph{IEEE Transactions on Computational Social
+  Systems}} \bibinfo{volume}{11}, \bibinfo{number}{3} (\bibinfo{year}{2024}),
+  \bibinfo{pages}{4001--4015}.
+\newblock
+\href{https://doi.org/10.1109/TCSS.2023.3323539}{doi:\nolinkurl{10.1109/TCSS.2023.3323539}}
+
+
+\bibitem[Kasper and Rablen(2023)]%
+        {kasper2023tax}
+\bibfield{author}{\bibinfo{person}{Matthias Kasper} {and}
+  \bibinfo{person}{Matthew~D. Rablen}.} \bibinfo{year}{2023}\natexlab{}.
+\newblock \showarticletitle{Tax Compliance After an Audit: {H}igher or
+  {L}ower?}
+\newblock \bibinfo{journal}{\emph{Journal of Economic Behavior \&
+  Organization}}  \bibinfo{volume}{207} (\bibinfo{year}{2023}),
+  \bibinfo{pages}{157--171}.
+\newblock
+\href{https://doi.org/10.1016/j.jebo.2023.01.013}{doi:\nolinkurl{10.1016/j.jebo.2023.01.013}}
+
+
+\bibitem[Lyons et~al\mbox{.}(2021)]%
+        {lyons2021conceptualising}
+\bibfield{author}{\bibinfo{person}{Henrietta Lyons}, \bibinfo{person}{Eduardo
+  Velloso}, {and} \bibinfo{person}{Tim Miller}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \showarticletitle{Conceptualising Contestability: Perspectives on
+  Contesting Algorithmic Decisions}.
+\newblock \bibinfo{journal}{\emph{Proceedings of the ACM on Human-Computer
+  Interaction}} \bibinfo{volume}{5}, \bibinfo{number}{CSCW1}
+  (\bibinfo{year}{2021}), \bibinfo{pages}{106}.
+\newblock
+\href{https://doi.org/10.1145/3449180}{doi:\nolinkurl{10.1145/3449180}}
+
+
+\bibitem[Macho-Stadler and P\'{e}rez-Castrillo(2006)]%
+        {machostadler2006optimal}
+\bibfield{author}{\bibinfo{person}{In\'{e}s Macho-Stadler} {and}
+  \bibinfo{person}{David P\'{e}rez-Castrillo}.}
+  \bibinfo{year}{2006}\natexlab{}.
+\newblock \showarticletitle{Optimal Enforcement Policy and Firms' Emissions and
+  Compliance with Environmental Taxes}.
+\newblock \bibinfo{journal}{\emph{Journal of Environmental Economics and
+  Management}} \bibinfo{volume}{51}, \bibinfo{number}{1}
+  (\bibinfo{year}{2006}), \bibinfo{pages}{110--131}.
+\newblock
+
+
+\bibitem[Marx et~al\mbox{.}(2020)]%
+        {marx2020predictive}
+\bibfield{author}{\bibinfo{person}{Charles~T. Marx}, \bibinfo{person}{Flavio
+  du~Pin Calmon}, {and} \bibinfo{person}{Berk Ustun}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Predictive Multiplicity in Classification}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 37th International Conference on
+  Machine Learning}} \emph{(\bibinfo{series}{ICML '20},
+  Vol.~\bibinfo{volume}{119})}. \bibinfo{publisher}{PMLR},
+  \bibinfo{address}{Virtual Event}, \bibinfo{pages}{6765--6774}.
+\newblock
+
+
+\bibitem[Meyer and Rowan(1977)]%
+        {meyer1977institutionalized}
+\bibfield{author}{\bibinfo{person}{John~W. Meyer} {and} \bibinfo{person}{Brian
+  Rowan}.} \bibinfo{year}{1977}\natexlab{}.
+\newblock \showarticletitle{Institutionalized Organizations: Formal Structure
+  as Myth and Ceremony}.
+\newblock \bibinfo{journal}{\emph{Amer. J. Sociology}} \bibinfo{volume}{83},
+  \bibinfo{number}{2} (\bibinfo{year}{1977}), \bibinfo{pages}{340--363}.
+\newblock
+\href{https://doi.org/10.1086/226550}{doi:\nolinkurl{10.1086/226550}}
+
+
+\bibitem[Mookherjee and Png(1992)]%
+        {mookherjee1992monitoring}
+\bibfield{author}{\bibinfo{person}{Dilip Mookherjee} {and}
+  \bibinfo{person}{Ivan P.~L. Png}.} \bibinfo{year}{1992}\natexlab{}.
+\newblock \showarticletitle{Monitoring vis-a-vis Investigation in Enforcement
+  of Law}.
+\newblock \bibinfo{journal}{\emph{The American Economic Review}}
+  \bibinfo{volume}{82}, \bibinfo{number}{3} (\bibinfo{year}{1992}),
+  \bibinfo{pages}{556--565}.
+\newblock
+\urldef\tempurl%
+\url{https://www.jstor.org/stable/2117321}
+\showURL{%
+\tempurl}
+
+
+\bibitem[{New York City Council}(2021)]%
+        {nyc2021ll144}
+\bibfield{author}{\bibinfo{person}{{New York City Council}}.}
+  \bibinfo{year}{2021}\natexlab{}.
+\newblock \bibinfo{title}{Local Law 144 of 2021: A Local Law to Amend the
+  Administrative Code of the City of New York, in Relation to Automated
+  Employment Decision Tools}.
+\newblock
+\shownote{Codified at N.Y.C. Admin. Code \S\S 20-870--20-874; effective July 5,
+  2023}.
+\newblock
+\urldef\tempurl%
+\url{https://s3.amazonaws.com/IGG/AI+Part+1+-+Materials/City+of+NY+-+Local+Law+144+of+2021.pdf}
+\showURL{%
+\tempurl}
+
+
+\bibitem[Power(1997)]%
+        {power1997audit}
+\bibfield{author}{\bibinfo{person}{Michael Power}.}
+  \bibinfo{year}{1997}\natexlab{}.
+\newblock \bibinfo{booktitle}{\emph{The Audit Society: Rituals of
+  Verification}}.
+\newblock \bibinfo{publisher}{Oxford University Press},
+  \bibinfo{address}{Oxford, UK}.
+\newblock
+
+
+\bibitem[Varas et~al\mbox{.}(2020)]%
+        {varas2020random}
+\bibfield{author}{\bibinfo{person}{Felipe Varas}, \bibinfo{person}{Iv\'{a}n
+  Marinovic}, {and} \bibinfo{person}{Andrzej Skrzypacz}.}
+  \bibinfo{year}{2020}\natexlab{}.
+\newblock \showarticletitle{Random Inspections and Periodic Reviews: Optimal
+  Dynamic Monitoring}.
+\newblock \bibinfo{journal}{\emph{The Review of Economic Studies}}
+  \bibinfo{volume}{87}, \bibinfo{number}{6} (\bibinfo{year}{2020}),
+  \bibinfo{pages}{2893--2937}.
+\newblock
+\href{https://doi.org/10.1093/restud/rdaa012}{doi:\nolinkurl{10.1093/restud/rdaa012}}
+
+
+\bibitem[Wright et~al\mbox{.}(2024)]%
+        {wright2024null}
+\bibfield{author}{\bibinfo{person}{Lucas Wright}, \bibinfo{person}{Roxana~Mika
+  Muenster}, \bibinfo{person}{Briana Vecchione}, \bibinfo{person}{Tianyao Qu},
+  \bibinfo{person}{Pika~(Senhuang) Cai}, \bibinfo{person}{Alan Smith},
+  \bibinfo{person}{Jacob Metcalf}, {and} \bibinfo{person}{J.~Nathan Matias}.}
+  \bibinfo{year}{2024}\natexlab{}.
+\newblock \showarticletitle{Null Compliance: NYC Local Law 144 and the
+  Challenges of Algorithm Accountability}. In
+  \bibinfo{booktitle}{\emph{Proceedings of the 2024 ACM Conference on Fairness,
+  Accountability, and Transparency}} \emph{(\bibinfo{series}{FAccT '24})}.
+  \bibinfo{publisher}{Association for Computing Machinery},
+  \bibinfo{address}{New York, NY, USA}, \bibinfo{pages}{1701--1713}.
+\newblock
+\href{https://doi.org/10.1145/3630106.3658998}{doi:\nolinkurl{10.1145/3630106.3658998}}
+
+
+\end{thebibliography}

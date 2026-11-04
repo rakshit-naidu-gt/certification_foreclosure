@@ -1,0 +1,38 @@
+\section{Introduction}
+
+Regulatory audit regimes for algorithmic systems — NYC Local Law 144's~\cite{nyc2021ll144} annual bias audit for automated employment tools, the EU AI Act's~\cite{euaiact2024} conformity assessments — share a structure: periodic evaluation against a fixed threshold yields a binary certification, on the theory that re-evaluation keeps an underlying property (fairness, freedom from harm) from silently degrading.
+
+This paper asks a narrower, more uncomfortable question: what if the \emph{act} of certifying changes the firm's incentives, independently of whether the certified property was accurately measured? Certification can shift a firm's \emph{perceived} probability of future scrutiny whether or not it confers formal legal immunity. NYC Local Law 144 specifically creates no formal safe harbor under Title VII or the NYC Human Rights Law; the mechanism we study operates through perceived salience, not actual legal exposure. If a firm invests in fairness maintenance under threat of an upcoming audit, this channel alone is enough for it to rationally reduce that investment once the threat lifts. Figure~\ref{fig:pipeline} summarizes the mechanism.
+
+\begin{figure*}[t]
+\centering
+\begin{tikzpicture}[
+  font=\scriptsize,
+  box/.style={draw, rounded corners, align=center, minimum width=2.6cm, minimum height=0.85cm, inner sep=3pt},
+  dec/.style={draw, diamond, align=center, aspect=2.4, inner sep=1pt},
+  arr/.style={-{Stealth[length=1.8mm]}, thick},
+  lbl/.style={font=\tiny, align=center}
+]
+
+\node[box] (n1) {Exposed: $q_t < \tau$\\ firm invests $c^*(p_H)$};
+\node[box, right=1.5cm of n1] (n2) {Certified\\ scrutiny drops $p_H \!\to\! p_L$};
+\node[box, right=1.5cm of n2] (n3) {Investment collapses\\ $c^*(p_L) < c^*(p_H)$ (Prop.~\ref{prop:drop})};
+\node[dec, below=1.0cm of n3] (dec) {$f(c^*(p_L)) \geq \delta$?};
+\node[box, below left=1.0cm and -0.15cm of dec] (n5a) {Sustained compliance\\ (Case A, Thm.~\ref{prop:recurring})};
+\node[box, below right=1.0cm and -0.15cm of dec] (n5b) {Quality declines\\ (kink, Cor.~\ref{cor:kink})};
+
+\draw[arr] (n1) -- node[lbl, above] {$q_t$ crosses $\tau$} (n2);
+\draw[arr] (n2) -- node[lbl, above] {(Prop.~\ref{prop:drop})} (n3);
+\draw[arr] (n3) -- (dec);
+\draw[arr] (dec) -| node[lbl, pos=0.25, above] {yes} (n5a);
+\draw[arr] (dec) -| node[lbl, pos=0.25, above] {no} (n5b);
+\draw[arr] (n5b.south) -- ++(0,-0.7cm) -| node[lbl, pos=0.25, below] {recurring audits: $q_t < \tau$ again (Case B cycle)} ($(n1.south)+(0,-0.7cm)$) -- (n1.south);
+
+\end{tikzpicture}
+\caption{The mechanism, in outline: crossing $\tau$ triggers certification and a discrete investment drop (Proposition~\ref{prop:drop}); if growth still exceeds drift the firm sustains compliance, otherwise quality declines (Corollary~\ref{cor:kink}) and, under recurring audits, can fall back below $\tau$ and repeat (Theorem~\ref{prop:recurring}).}
+\label{fig:pipeline}
+\end{figure*}
+
+We formalize this as a dynamic investment problem: a fairness-quality state drifts downward on its own unless the firm invests to counteract it, and the firm's only reason to invest is to reduce expected enforcement exposure, scaled by a scrutiny probability that drops discretely at first certification. A standard comparative-statics argument shows optimal investment is strictly increasing in perceived scrutiny, so investment drops discretely at certification (Proposition~\ref{prop:drop}), and under a condition on the safe-harbor discount relative to the drift rate, quality exhibits a \emph{kink}: rising while exposed, falling once shielded (Corollary~\ref{cor:kink}). Because real regimes recur rather than certifying once and for all, we generalize to lapsing certification (Section~\ref{sec:recurring}): the kink recurs indefinitely or the firm settles at a degraded steady state, both strictly worse long-run than no safe harbor at all (Theorem~\ref{prop:recurring}). Since firms plausibly differ in how strongly certification relieves scrutiny, a single common threshold sorts firms into these regimes by an unobserved characteristic (Section~\ref{sec:heterogeneous}), with an aggregate welfare cost we compute, and we take a first step toward the regulator's welfare-maximizing threshold (Section~\ref{sec:regulator}). The results are not an artifact of the specific functional forms used (Section~\ref{sec:sim-functionalform}), and replacing the perfectly-observed threshold with a noisily-observed one eliminates cycling once noise exceeds an analytically characterized threshold — below it, cycling persists, converging to the hard-threshold model's own behavior as noise vanishes (Section~\ref{sec:imperfectobs}).
+
+The underlying mechanism — effort declining as monitoring probability declines — is not new; it organizes classical law-and-economics accounts of enforcement~\cite{becker1968crime,mookherjee1992monitoring}. Our contribution is formalizing it for point-in-time algorithmic certification and deriving the kink corollary as a testable consequence, which existing empirical critiques of audit regimes do not provide (Section~\ref{sec:related}).

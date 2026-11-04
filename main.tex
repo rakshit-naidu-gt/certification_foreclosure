@@ -1,0 +1,80 @@
+%% FAccT 2027 submission: single-column, anonymized (see authorguide.html)
+\documentclass[manuscript,screen,review,anonymous]{acmart}
+
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric,fit,calc}
+
+%% Compact theorem style: the defaults' vertical padding around each of this
+%% paper's ~18 theorem-like environments adds up to real page space with no
+%% content benefit, so we tighten it (space above/below, no extra indent).
+\newtheoremstyle{compact}{1pt}{1pt}{}{}{\bfseries}{.}{.5em}{}
+\theoremstyle{compact}
+\setlength{\topsep}{2pt}
+\setlength{\partopsep}{0pt}
+\newtheorem{proposition}{Proposition}
+\newtheorem{mainthm}[proposition]{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{assumption}{Assumption}
+\newtheorem{lemma}{Lemma}
+\newtheorem{remark}{Remark}
+
+%% Venue metadata; replace the submission ID once the submission system assigns one.
+\setcopyright{none}
+\acmConference[FAccT '27]{ACM Conference on Fairness, Accountability, and Transparency}{June 2027}{}
+\acmYear{2027}
+\copyrightyear{2027}
+\acmSubmissionID{XXX}
+\settopmatter{printacmref=false}
+\renewcommand\footnotetextcopyrightpermission[1]{}
+\pagestyle{plain}
+
+\begin{document}
+
+\title{Certification as Foreclosure: A Dynamic Model of Compliance-Induced Investment Collapse in Algorithmic Audits}
+
+\author{Anonymous Author(s)}
+\affiliation{%
+  \institution{Anonymous Institution}
+  \city{Anonymous City}
+  \country{Anonymous Country}
+}
+
+\begin{abstract}
+Periodic algorithmic audits, such as those required under NYC Local Law 144 and the EU AI Act, are designed to keep hiring and lending systems fair over time. We show that the act of certification can itself work against this goal: if passing an audit lowers a firm's perceived probability of future scrutiny, a safe-harbor or reduced-salience effect, then a profit-maximizing firm's optimal investment in maintaining fairness quality drops discretely at the moment it is first certified. We formalize this as a dynamic investment model and prove, using a standard economic-theory tool for signing how an optimal choice moves when a parameter moves (monotone comparative statics), that optimal maintenance investment is strictly increasing in perceived enforcement probability. We derive a testable corollary: whenever the safe-harbor discount is strong enough that post-certification investment falls below the system's passive drift rate, the fairness-quality trajectory exhibits a \emph{kink}, rising before certification and falling after, concentrated specifically at the first certification event. This signature is sharper and more falsifiable than a general claim that audits are imperfect. We further show that under recurring audits, where certification can lapse, as under NYC Local Law 144's annual cadence, the one-time kink generalizes to one of two structural failure modes: a permanently degraded but stable steady state, or perpetual cycling in and out of compliance. In both cases long-run quality is strictly worse than under a counterfactual regime with no safe harbor at all, despite the firm never permanently failing an audit. Numerical illustrations confirm both the single-certification kink and the recurring-audit dynamics under plausible parameterizations, robust across a wide range of the safe-harbor discount and anchored against real NYC Local Law 144 disclosure statistics, contrasted against no-safe-harbor ablations in which the same firm keeps investing and the metric keeps improving. Because the strength of the safe-harbor effect plausibly varies across firms, we further show that a single, uniformly-applied threshold sorts firms into these two long-run regimes by an unobserved characteristic, costing roughly a third of achievable long-run quality in aggregate under a stylized firm population, and we take a first step toward the regulator's design problem, showing welfare rises monotonically in the threshold up to the point at which the safe harbor becomes vacuous. The discrete investment collapse, kink condition, single-certification kink, and recurring-audit cycling all reproduce under a structurally different pair of functional forms. Finally, replacing the perfectly-observed threshold with a noisily-observed one eliminates cycling altogether and, in our simulations, raises long-run quality rather than lowering it, because uncertainty prevents any firm from ever fully escaping scrutiny. The model implies that regulatory audit design must guard against a distinct failure mode beyond threshold miscalibration: certification regimes that discretely relieve scrutiny can convert a passing audit into the proximate cause of subsequent decay, a risk that a regulator relying only on pass/fail records cannot fully diagnose.
+\end{abstract}
+
+\ccsdesc[500]{Applied computing~Law, social and behavioral sciences}
+\ccsdesc[300]{Social and professional topics~Employment issues}
+\ccsdesc[100]{Computing methodologies~Machine learning}
+
+\keywords{algorithmic auditing, algorithmic fairness, regulatory compliance, moral hazard, mechanism design, NYC Local Law 144}
+
+\maketitle
+
+\input{files/introduction}
+\input{files/related_work}
+\input{files/model}
+\input{files/simulation}
+\input{files/regulator}
+\input{files/discussion}
+\input{files/conclusion}
+\bibliographystyle{ACM-Reference-Format}
+\bibliography{refs}
+
+%% Endmatter: one extra page, statements only. Positionality, author
+%% contributions, acknowledgements and competing-interests statements are
+%% omitted for the anonymized submission.
+\clearpage
+\input{files/impact_statement}
+
+%% Appendices go at the end of the same PDF; they do not count toward the limit.
+\clearpage
+\appendix
+\input{files/appendix_proofs}
+\input{files/appendix_extra_sim}
+\input{files/appendix}
+
+\end{document}

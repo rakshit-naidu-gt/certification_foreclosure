@@ -1,0 +1,198 @@
+\section{Model}
+\label{sec:model}
+
+This section builds the model in stages: a firm's quality drifts down on its own and must be maintained by costly investment (below); the firm invests only to reduce its exposure to enforcement (Assumption~\ref{as:L}); and audits translate quality into a perceived probability of scrutiny that drops once the firm is certified (Equation~\ref{eq:pt}).
+
+\paragraph{State and dynamics.} A firm operates an automated decision system with fairness-quality state $q_t \in \mathbb{R}$ at period $t$ (higher is fairer). Each period the firm chooses an investment $c_t \geq 0$ in maintaining or improving the system, and the state evolves as
+\begin{equation}
+q_{t+1} = q_t + f(c_t) - \delta,
+\label{eq:dynamics}
+\end{equation}
+where $\delta > 0$ is a passive drift rate (e.g., from distribution shift) and $f$ converts investment into quality improvement.
+
+\begin{assumption}
+$f: \mathbb{R}_+ \to \mathbb{R}_+$ is twice continuously differentiable, strictly increasing, strictly concave with $f''(c)<0$ for every $c>0$ (stronger than strict concavity alone, satisfied by both $f(c)=a\sqrt{c}$ and $f(c)=ac^{1/3}$ below), $f(0)=0$, with Inada conditions $\lim_{c\to0^+}f'(c)=\infty$, $\lim_{c\to\infty}f'(c)=0$. This guarantees~\eqref{eq:foc} has a unique interior solution for every $p>0$ and reachable $q_{t+1}$.
+\label{as:f}
+\end{assumption}
+
+\paragraph{Enforcement risk.} The firm's sole incentive to invest in $q$ is to reduce its expected exposure to litigation or regulatory enforcement, $L(q_t)$, decreasing in quality.
+
+\begin{assumption}
+$L: \mathbb{R} \to \mathbb{R}_+$ is twice continuously differentiable, strictly decreasing, strictly convex with $L''(q)>0$ for every $q$ (again stronger than strict convexity alone, satisfied by $L(q)=b/(q+1)$ and $L(q)=be^{-q}$ below). The calibration $L(q)=b/(q+1)$ requires $q>-1$, verified numerically along every simulated trajectory.
+\label{as:L}
+\end{assumption}
+
+Let $p(t)$ denote the firm's perceived probability of scrutiny in period $t$. Audits occur periodically; once quality first reaches a legal threshold $\tau$ and the firm is certified, $p(t)$ drops discretely and stays low until the next scheduled audit:
+\begin{equation}
+p(t) =
+\begin{cases}
+p_H & \text{if exposed,} \\
+p_L = \rho\, p_H, \ \rho \in (0,1) & \text{if certified,}
+\end{cases}
+\label{eq:pt}
+\end{equation}
+where \emph{exposed} means never certified or the most recent audit failed, and \emph{certified} means holding an unexpired safe harbor.
+
+\begin{assumption}
+The certification-triggered scrutiny discount satisfies $\rho \in (0,1)$ and is common knowledge to the firm.
+\label{as:rho}
+\end{assumption}
+
+\paragraph{The firm's problem.} The firm chooses a sequence $\{c_t\}$ to minimize discounted expected cost,
+\begin{equation}
+\min_{\{c_t\}} \ \sum_{t} \beta^t \Big[ c_t + p(t)\, L(q_t) \Big], \qquad \beta \in (0,1).
+\label{eq:objective}
+\end{equation}
+We solve this \emph{myopically}: each period the firm minimizes its own investment cost plus only the next period's expected litigation cost, approximating the exact Bellman condition $1+\beta V'(q_{t+1})f'(c_t)=0$ by replacing $V'(q_{t+1})$ with $p(t{+}1)L'(q_{t+1})$ — exact if $p(\cdot)$ is constant forever, and otherwise capturing the firm's immediate incentive while holding fixed its later behavior. Every result below holds at this scope; Section~\ref{sec:forwardlooking} checks two of Theorem~\ref{prop:recurring}'s three regimes against the fully forward-looking alternative.
+
+The interior first-order condition at scrutiny level $p$ is
+\begin{equation}
+\beta\, p \cdot |L'(q_{t+1})| \cdot f'(c_t) = 1.
+\label{eq:foc}
+\end{equation}
+
+\subsection{Discrete Investment Collapse}
+
+\begin{proposition}
+Under Assumptions~\ref{as:f}--\ref{as:rho}, the optimal investment $c^*(p)$ solving \eqref{eq:foc} is strictly increasing in $p$. Consequently, since $p(t)$ drops discretely from $p_H$ to $p_L = \rho\, p_H$ at first certification, optimal investment drops discretely: $c^*(p_L) < c^*(p_H)$. (The single-period objective $J(c;p)=c+\beta p\,L(q_t+f(c)-\delta)$ is strictly convex in $c$, giving a unique minimizer $c^*(p)$; the implicit function theorem applied to~\eqref{eq:foc} signs $dc^*/dp>0$. Full proof in Appendix~\ref{app:proofs}.)
+\label{prop:drop}
+\end{proposition}
+
+\begin{lemma}[Joint monotonicity of optimal investment]
+\label{lem:cstar}
+Under Assumptions~\ref{as:f}--\ref{as:rho}, the optimal investment $c^*(q,p)$ solving~\eqref{eq:foc} at state $q$ and scrutiny $p>0$ is strictly increasing in $p$ holding $q$ fixed, and strictly decreasing in $q$ holding $p$ fixed, at every $(q,p)$. (The same convexity argument applies at every $(q,p)$; the cross-partials $\partial^2J/\partial c\,\partial p$ and $\partial^2J/\partial c\,\partial q$ have opposite signs, giving the opposite-signed comparative statics. Full proof in Appendix~\ref{app:proofs}.)
+\end{lemma}
+
+\begin{corollary}[Automatic non-overshoot]
+\label{cor:slopebound}
+Under Assumptions~\ref{as:f}--\ref{as:rho}, the one-period update map $h_p(q) \equiv q + f(c^*(q,p)) - \delta$ satisfies $h_p'(q) \in (0,1)$ at \emph{every} $q$ and $p>0$, for every $f,L$ satisfying Assumptions~\ref{as:f}--\ref{as:L}, with no bound on $f''$ or $L''$'s magnitude required. (Writing $h_p'(q)$ via Lemma~\ref{lem:cstar}'s two cross-partials, a common term cancels, leaving $h_p'(q)=L'f''/(L''f'^2+L'f'')$: numerator and denominator are both strictly positive, with the denominator strictly larger, so $h_p'(q)\in(0,1)$; full proof in Appendix~\ref{app:proofs}.)
+\end{corollary}
+
+Proposition~\ref{prop:drop} shows investment falls at certification; whether this is consequential for $q_t$'s trajectory depends on how the new investment compares to $\delta$.
+
+\begin{corollary}
+If $f(c^*(\tau,p_L)) < \delta \leq f(c^*(\tau,p_H))$ — evaluated at the certification date $q_t=\tau$ — so pre-certification investment offset drift while post-certification investment does not, then $q_t$ is non-decreasing just before first certification and strictly decreasing just after: a kink at the certification date. This holds whenever $\rho$ is strong enough to pull $f(c^*(p_L))$ below $\delta$ without $f(c^*(p_H))$ also falling below it (Proposition~\ref{prop:drop}) — equivalently (Lemma~\ref{lem:cstar}), exactly $q^*(p_L) < \tau \leq q^*(p_H)$, the same region driving Theorem~\ref{prop:recurring}'s cycling case.
+\label{cor:kink}
+\end{corollary}
+
+\subsection{Recurring Audits and Lapsing Certification}
+\label{sec:recurring}
+
+Corollary~\ref{cor:kink} describes a firm's \emph{first} certification, treating the safe harbor as permanent. Real audit regimes re-evaluate periodically (NYC Local Law 144~\cite{nyc2021ll144} requires an annual bias audit), so certification can lapse. We generalize \eqref{eq:pt} to a state-contingent rule, normalizing the audit cadence to one model period:
+\begin{equation}
+p(t) = p_H \cdot \mathbf{1}\{q_t < \tau\} + p_L \cdot \mathbf{1}\{q_t \geq \tau\},
+\label{eq:pt-recurring}
+\end{equation}
+so certification is granted exactly when quality meets $\tau$ and lapses immediately once it falls below — a strict generalization of \eqref{eq:pt}'s one-time, permanent switch.
+
+\begin{assumption}
+\label{as:steadystate}
+There exists $c_\delta \geq 0$ with $f(c_\delta) = \delta$, and for every $p > 0$ a unique $q^*(p)$ solving
+\begin{equation}
+\beta\, p\, |L'(q^*(p))|\, f'(c_\delta) = 1,
+\label{eq:steadystate}
+\end{equation}
+by $|L'|$ continuous, strictly decreasing, with full range on the relevant interval.
+\end{assumption}
+
+$q^*(p)$ is the quality level at which investing exactly enough to offset drift is myopically optimal under constant scrutiny $p$: a \emph{steady state} of \eqref{eq:dynamics} the firm has no incentive to move away from.
+
+\begin{proposition}
+Under Assumptions~\ref{as:f}--\ref{as:steadystate}, $q^*(p)$ is strictly increasing in $p$. (From~\eqref{eq:steadystate}, $|L'(q^*(p))|=1/(\beta p f'(c_\delta))$ is strictly decreasing in $p$ on the right, so the unique solution rises with $p$ since $|L'|$ is strictly decreasing in $q$.)
+\label{prop:steadystate}
+\end{proposition}
+
+\begin{corollary}[Comparative statics in the drift rate]
+\label{cor:deltacompstat}
+Writing $q^*(p,\delta)$ to make the dependence on $\delta$ explicit: under Assumptions~\ref{as:f}--\ref{as:steadystate}, $q^*(p,\delta)$ is strictly decreasing in $\delta$ for fixed $p$. (Since $c_\delta\equiv f^{-1}(\delta)$ rises with $\delta$ and $f'$ is decreasing, $f'(c_\delta)$ falls as $\delta$ rises, pushing~\eqref{eq:steadystate}'s right-hand side up and so $q^*(p,\delta)$ down: a firm facing more drift settles, all else equal, at lower steady-state quality.)
+\end{corollary}
+
+\begin{mainthm}[Recurring audits]
+Under Assumptions~\ref{as:f}--\ref{as:steadystate} and the state-contingent rule~\eqref{eq:pt-recurring}, exactly one of three regimes occurs:
+\begin{enumerate}
+\item[(a)] \textbf{Sustained certification.} If $\tau \leq q^*(p_L)$, the trajectory converges to the stable steady state $q^*(p_L) \geq \tau$, and the firm remains certified indefinitely.
+\item[(b)] \textbf{Perpetual cycling.} If $q^*(p_L) < \tau < q^*(p_H)$, no steady state is compatible with the threshold: the firm climbs toward $q^*(p_H)$ while exposed, is certified once $q_t \geq \tau$, declines while shielded, and reverts to exposed once $q_t$ falls back below $\tau$, repeating indefinitely. The trajectory is eventually confined to a bounded interval it crosses infinitely often; we call this pattern \emph{cycling}. (The proof establishes this boundedness, infinite recurrence, and the long-run average bounds below, but not that the orbit is eventually exactly periodic — see Appendix~\ref{app:proofs}.)
+\item[(c)] \textbf{Perpetual exclusion.} If $\tau \geq q^*(p_H)$, the trajectory converges to $q^*(p_H) \leq \tau$ under permanent exposure, and the firm is never certified. (The boundary $\tau=q^*(p_H)$ belongs here, not to Case (b): monotone convergence approaches but never attains $q^*(p_H)$ in finite time.)
+\end{enumerate}
+In all three regimes, long-run (time-averaged, in case (b)) quality is bounded above by $q^*(p_H)$; strictly below it whenever $\rho<1$ in cases (a) and (b), equal to it in case (c). Recurring certification under any positive safe-harbor discount thus produces strictly worse long-run outcomes than a no-safe-harbor counterfactual whenever certification is ever achieved, even though the firm never permanently fails an audit.
+\label{prop:recurring}
+\end{mainthm}
+
+\begin{proof}[Proof sketch]
+Corollary~\ref{cor:slopebound} makes $h_p$ strictly increasing everywhere with $h_p(q^*(p))=q^*(p)$, so $h_p(q)$ lies strictly between $q$ and $q^*(p)$ on either side (no overshoot). In Case (a), a firm below $\tau$ rises toward $q^*(p_H)>\tau$ exposed, and once certified stays at or above $\tau$ forever, converging to $q^*(p_L)$; Case (c) is symmetric. In Case (b), the same property makes $[h_{p_L}(\tau),h_{p_H}(\tau))$ forward-invariant and eventually entered — resting on either side would contradict that side's own steady state — giving the average bound without exact periodicity (a stronger claim not established; Appendix~\ref{app:proofs} explains why).
+\end{proof}
+
+Case (b) generalizes Corollary~\ref{cor:kink} to an indefinitely repeating sequence of kinks; Case (c) is a boundary case for completeness.
+
+\subsection{Robustness to Forward-Looking Optimization}
+\label{sec:forwardlooking}
+
+A fully rational, forward-looking firm internalizes that today's investment lowers litigation exposure in \emph{every} future period, not only the next, and so might invest more, potentially blunting the collapse. In the two regimes where scrutiny is eventually constant forever — Cases (a) and (c) — this does not overturn the finding: the rational firm's steady state is the myopic formula evaluated at an inflated effective scrutiny level.
+
+\begin{proposition}[Forward-looking steady state under constant scrutiny]
+\label{prop:forwardlooking}
+Suppose scrutiny is held at a constant $p>0$ forever — as it eventually is along the \emph{myopic} firm's path in Cases (a) and (c) — and let $V$ solve \eqref{eq:objective} exactly. (It is not established that a \emph{forward-looking} firm's own path also settles into constant $p$; this characterizes what such a steady state would look like, if reached.) If the exact problem admits a steady state $q^{\dagger}(p)$ at which the firm invests $c_\delta$ forever, then
+\[
+q^{\dagger}(p) = q^*\!\left(\frac{p}{1-\beta}\right),
+\]
+so $q^{\dagger}(p)$ is strictly increasing in $p$ and $q^{\dagger}(p) > q^*(p)$ for every $p>0,\beta\in(0,1)$: forward-looking optimization preserves the comparative static driving Theorem~\ref{prop:recurring} while raising sustained quality. (The envelope-theorem recursion for $V'$ becomes stationary at such a steady state, reproducing~\eqref{eq:steadystate} with $p$ replaced by $p/(1-\beta)>p$. Full proof in Appendix~\ref{app:proofs}.)
+\end{proposition}
+
+This is conditional on such a steady state existing (left open, as is Assumption~\ref{as:steadystate} for the myopic model) and does not extend to Case (b), where scrutiny is never constant along the equilibrium path; whether forward-looking cycling shrinks, grows, or disappears needs numerical dynamic programming (Section~\ref{sec:discussion}).
+
+\subsection{Heterogeneous Firms}
+\label{sec:heterogeneous}
+
+Theorem~\ref{prop:recurring} treats $\rho$ as common across firms, but its strength plausibly varies with unobserved characteristics (litigation exposure, visibility, unionization).
+
+\begin{proposition}[Firm sorting under a common threshold]
+Suppose firms differ in $\rho_i \in (0,1)$ but share $p_H$ and $\tau < q^*(p_H)$. Since $q^*(\rho p_H)$ is strictly increasing in $\rho$ (Proposition~\ref{prop:steadystate}), there is at most one cutoff $\rho_A(\tau)$ solving $q^*(\rho_A(\tau) p_H) = \tau$, existing in $(0,1)$ provided $\tau > \lim_{\rho\to0^+}q^*(\rho p_H)$ (holds at our calibration: this limit is $-1<\tau=0.80$). Firm $i$ falls into Case (a) if $\rho_i \geq \rho_A(\tau)$, Case (b) otherwise (immediate from Theorem~\ref{prop:recurring}'s case conditions).
+\label{prop:heterogeneous}
+\end{proposition}
+
+\begin{remark}[Heterogeneous exposure and drift]
+\label{rem:heterogeneous-general}
+The proof applies verbatim if firms instead differ in baseline exposure $p_{H,i}$ or drift $\delta_i$ (Corollary~\ref{cor:deltacompstat}), sorting on $p_{L,i}\equiv\rho_i p_{H,i}$: Case (a) if $q^*(p_{L,i},\delta_i)\geq\tau$, Case (c) if $\tau\geq q^*(p_{H,i},\delta_i)$, Case (b) otherwise. Sorting risk is governed by $p_{L,i}$, not $\rho_i$ alone. Corollary~\ref{cor:aggwelfare}'s integral extends the same way, with a third term for Case (c).
+\end{remark}
+
+A single audit rule thus sorts firms into starkly different regimes: weak-safe-harbor firms ($\rho_i$ near $1$) settle into stable, degraded compliance; strong-safe-harbor firms cycle perpetually. Pass/fail records cannot distinguish Case (a)'s degraded-but-stable compliance from genuine compliance, and Case (b)'s cycling surfaces without flagging \emph{why}, or that both underperform the no-safe-harbor benchmark. At our calibration, $\rho_A(\tau)=0.5015$, confirmed numerically (Figure~\ref{fig:rhosweep}).
+
+\begin{corollary}[Aggregate welfare loss]
+\label{cor:aggwelfare}
+Let firms be drawn from $\rho_i\sim G$ on $(0,1)$, sharing $p_H$, $\tau<q^*(p_H)$. For a Case (b) firm, write $\bar q_B(\tau,\rho)$ for the $\limsup$ time-average bounded in Theorem~\ref{prop:recurring}'s proof. Aggregate welfare is
+\begin{equation}
+W_{\mathrm{agg}}(\tau, G) = \int_0^{\rho_A(\tau)} \bar{q}_B(\tau,\rho)\, dG(\rho) \;+\; \int_{\rho_A(\tau)}^{1} q^*(\rho\, p_H)\, dG(\rho),
+\label{eq:aggwelfare}
+\end{equation}
+cycling firms then sustained firms. The welfare loss $q^*(p_H) - W_{\mathrm{agg}}(\tau, G)$ is strictly positive for every $G$ on $(0,1)$, since $q^*(\rho p_H) < q^*(p_H)$ even in Case (a) (Proposition~\ref{prop:steadystate}), and cycling firms lose further still.
+\end{corollary}
+
+Section~\ref{sec:sim-heterogeneous} computes this under two illustrative distributions.
+
+\subsection{Imperfect Observation}
+\label{sec:imperfectobs}
+
+Sections~\ref{sec:recurring}--\ref{sec:heterogeneous} assume audits perfectly reveal whether $q_t \geq \tau$; real audits are noisy proxies, so we replace the hard threshold~\eqref{eq:pt-recurring} with a smooth detection probability $\pi: \mathbb{R} \to (0,1)$, strictly increasing with $\pi(-\infty)=0$, $\pi(\infty)=1$ — e.g.\ the logistic $\pi(q) = 1/(1+\exp(-(q-\tau)/\sigma))$ — and redefine
+\begin{equation}
+p(q) = p_H - \pi(q)\,(p_H - p_L),
+\label{eq:pt-noisy}
+\end{equation}
+so certification is probabilistic, with $\pi(q)$ the probability of being certified at $q$. As $\sigma \to 0$, $\pi(q) \to \mathbf{1}\{q \geq \tau\}$ and~\eqref{eq:pt-noisy} recovers~\eqref{eq:pt-recurring} exactly.
+
+\begin{assumption}
+$\pi$ is continuous and strictly increasing with $\pi(-\infty)=0$, $\pi(\infty)=1$.
+\label{as:noisy}
+\end{assumption}
+
+\begin{proposition}[Imperfect observation: a unique crossing point, not always stable]
+Under Assumptions~\ref{as:f}--\ref{as:noisy}, for every $\sigma > 0$ the dynamics under~\eqref{eq:pt-noisy} have a unique steady state $q^{**}(\sigma) \in (q^*(p_L), q^*(p_H))$, unconditionally — no kink condition needed. If in addition $f(c^*(p_H)) - \delta > 0 > f(c^*(p_L)) - \delta$ (the kink condition, equivalently $q^*(p_L)<\tau<q^*(p_H)$), then $q^{**}(\sigma) \to \tau$ as $\sigma \to 0$.
+
+This steady state is \emph{not}, however, stable for every $\sigma>0$: under the logistic $\pi$ and the kink condition, there is a $\sigma_0>0$ such that for $\sigma<\sigma_0$, $q^{**}(\sigma)$ is \emph{repelling}, so cycling is eliminated only once $\sigma$ exceeds $\sigma_0$. Below it (Section~\ref{sec:sim-imperfectobs}), the trajectory settles into a bounded oscillation whose amplitude grows, and whose time-average approaches the hard-threshold cycling mean, as $\sigma\to0$.
+\label{prop:imperfectobs}
+\end{proposition}
+
+\begin{proof}[Proof sketch]
+Since $p(q)\in(p_L,p_H)$ strictly for every finite $q$, bounding $c^*(q,p(q))$ between $c^*(q,p_L)$ and $c^*(q,p_H)$ shows $g(q)\equiv f(c^*(q,p(q)))-\delta$ is positive for $q\le q^*(p_L)$ and negative for $q\ge q^*(p_H)$ unconditionally, giving existence and uniqueness with no kink condition needed; $q^{**}(\sigma)\to\tau$ under the kink condition follows from the same bound at a fixed $q$ as $\sigma\to0$. Instability for small $\sigma$ comes from the fixed-point slope $k'(q^{**}(\sigma))$: a bounded term (Corollary~\ref{cor:slopebound}'s bound) minus a term that, for the logistic $\pi$, grows like $1/\sigma$, so $k'(q^{**}(\sigma))\to-\infty$ as $\sigma\to0$. Full proof in Appendix~\ref{app:proofs}.
+\end{proof}
+
+Section~\ref{sec:discussion} discusses the mechanism and its policy implications; Section~\ref{sec:sim-imperfectobs} confirms both regimes numerically.

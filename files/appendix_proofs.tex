@@ -1,0 +1,136 @@
+\section{Full Proofs of Section~\ref{sec:model}'s Results}
+\label{app:proofs}
+This appendix gives the complete proofs that Section~\ref{sec:model} states as sketches, for the reader who wants full rigor; nothing here changes any claim made in the main text.
+
+\subsection{Proof of Proposition~\ref{prop:drop}}
+\begin{proof}
+The current state $q_t$ is fixed throughout this proof and suppressed from the notation $c^*(p)$; Lemma~\ref{lem:cstar} below restores it and records the joint dependence of $c^*$ on both $q$ and $p$ that later results (Section~\ref{sec:recurring} onward) require. Write the single-period objective as $J(c;p) = c + \beta p\, L(q_t + f(c) - \delta)$, with $q_{t+1} \equiv q_t + f(c) - \delta$; we assume $f$ and $L$ are twice continuously differentiable throughout. Differentiating once with respect to $c$,
+\[
+J'(c;p) = 1 + \beta p\, L'(q_{t+1})\, f'(c),
+\]
+whose zero is exactly~\eqref{eq:foc}. Differentiating with respect to $c$ a second time (no derivative of $f$ or $L$ beyond second order is needed anywhere in this proof),
+\[
+J''(c;p) = \beta p \Big[ L''(q_{t+1})\, f'(c)^2 \;+\; L'(q_{t+1})\, f''(c) \Big].
+\]
+By Assumption~\ref{as:L}, $L'' > 0$, so the first term is strictly positive; by Assumption~\ref{as:f}, $f'' < 0$, and by Assumption~\ref{as:L}, $L' < 0$, so $L'(q_{t+1}) f''(c) > 0$ as well. Hence $J''(c;p) > 0$ for every $p > 0$: $J$ is strictly convex in $c$, giving a unique interior minimizer $c^*(p)$ characterized by \eqref{eq:foc} (existence and uniqueness follow from Assumption~\ref{as:f}'s Inada conditions together with strict concavity).
+
+To sign $dc^*/dp$, apply the implicit function theorem, a standard calculus tool for determining how a solution that is only implicitly defined by a first-order condition moves as a parameter of the problem moves, to $J'(c^*(p);p) = 0$:
+\begin{align*}
+\frac{dc^*}{dp} &= -\frac{\partial^2 J / \partial c\, \partial p}{\partial^2 J/\partial c^2} \\
+&= -\frac{\beta\, L'(q_{t+1})\, f'(c^*)}{J''(c^*;p)}.
+\end{align*}
+The numerator $\beta L'(q_{t+1}) f'(c^*)$ is strictly negative ($L' < 0$, $f' > 0$), and the denominator $J''(c^*;p)$ is strictly positive as shown above, so $dc^*/dp > 0$: $c^*(p)$ is strictly increasing in $p$. Evaluating at $p_H$ and $p_L = \rho\, p_H < p_H$ gives $c^*(p_L) < c^*(p_H)$.
+\end{proof}
+
+\subsection{Proof of Lemma~\ref{lem:cstar}}
+\begin{proof}
+Restore the state dependence suppressed above: write $J(c;q,p) = c + \beta p\, L(q+f(c)-\delta)$ with $q_{t+1} \equiv q+f(c)-\delta$. The proof of Proposition~\ref{prop:drop} shows $\partial^2 J/\partial c^2(c;q,p) > 0$ at every $(q,p)$, not only at the particular $q_t$ fixed there, so $c^*(q,p)$ is the unique interior minimizer for every state and scrutiny level, and the implicit function theorem applies to either argument of $J$ against this same strictly positive denominator. The two cross-partials, each a single derivative of $J'$ taken with respect to the second argument, are
+\begin{align*}
+\frac{\partial^2 J}{\partial c\, \partial p} &= \beta\, L'(q_{t+1})\, f'(c) \;<\; 0 \qquad (L'<0,\ f'>0), \\
+\frac{\partial^2 J}{\partial c\, \partial q} &= \beta p\, L''(q_{t+1})\, f'(c) \;>\; 0 \qquad (L''>0,\ f'>0),
+\end{align*}
+so
+\[
+\frac{\partial c^*}{\partial p} = -\frac{\partial^2 J/\partial c\,\partial p}{\partial^2 J/\partial c^2} \;>\; 0, \qquad
+\frac{\partial c^*}{\partial q} = -\frac{\partial^2 J/\partial c\,\partial q}{\partial^2 J/\partial c^2} \;<\; 0,
+\]
+the two signs differing only because the numerators differ in sign, against the same strictly positive denominator common to both. Since $J$ is twice continuously differentiable in $(c,q,p)$ with $\partial^2J/\partial c^2>0$ throughout, the implicit function theorem also gives $c^*(q,p)$ jointly continuous (indeed $C^1$) in $(q,p)$, a fact used in the proof of Proposition~\ref{prop:imperfectobs}.
+\end{proof}
+
+\subsection{Proof of Corollary~\ref{cor:slopebound}}
+\begin{proof}
+Fix $(q,p)$, write $c\equiv c^*(q,p)$ and $q_{t+1}\equiv q+f(c)-\delta$, and let $N \equiv \partial^2J/\partial c\,\partial q = \beta p L''(q_{t+1})f'(c)$ and $D \equiv \partial^2J/\partial c^2 = \beta p[L''(q_{t+1})f'(c)^2+L'(q_{t+1})f''(c)]$ be the two quantities computed in the proof of Lemma~\ref{lem:cstar}, so that $\partial c^*/\partial q = -N/D$. Then
+\[
+h_p'(q) = 1+f'(c)\frac{\partial c^*}{\partial q} = 1 - \frac{f'(c)N}{D} = \frac{D-f'(c)N}{D}.
+\]
+The numerator simplifies by direct cancellation of the $L''(q_{t+1})f'(c)^2$ term common to both $D$ and $f'(c)N$:
+\[
+D - f'(c)N = \beta p\big[L''(q_{t+1})f'(c)^2+L'(q_{t+1})f''(c)\big] - f'(c)\cdot\beta p L''(q_{t+1})f'(c) = \beta p\, L'(q_{t+1})f''(c).
+\]
+Hence $h_p'(q) = \dfrac{L'(q_{t+1})f''(c)}{L''(q_{t+1})f'(c)^2+L'(q_{t+1})f''(c)}$. Since $L'<0$ and $f''<0$ (Assumptions~\ref{as:f}--\ref{as:L}), the numerator $L'(q_{t+1})f''(c)$ is a product of two strictly negative terms and so is strictly positive; the denominator is this same strictly positive quantity plus the strictly positive term $L''(q_{t+1})f'(c)^2$, and so strictly exceeds the numerator. Both being strictly positive with the denominator strictly larger, $h_p'(q) \in (0,1)$.
+\end{proof}
+
+\subsection{Proof of Theorem~\ref{prop:recurring}}
+\begin{proof}
+Fix $p \in \{p_H, p_L\}$ and consider the one-period update map $h_p(q) \equiv q + f(c^*(q,p)) - \delta$, where $c^*(q,p)$ solves \eqref{eq:foc} at current state $q$. By Assumption~\ref{as:steadystate}, $h_p$ has a unique fixed point $q^*(p)$.
+
+We first establish that $h_p$ is \emph{single-crossing} around $q^*(p)$: the update map pulls quality toward $q^*(p)$ from either side, changing direction exactly once rather than pushing away from it or reversing back and forth. By Lemma~\ref{lem:cstar}, $c^*(q,p)$ is strictly decreasing in $q$ for fixed $p$. Hence $f(c^*(q,p)) - \delta$ is strictly decreasing in $q$ and, since it vanishes exactly at $q^*(p)$ by construction, crosses zero exactly once: $h_p(q) > q$ for $q < q^*(p)$ and $h_p(q) < q$ for $q > q^*(p)$. Single-crossing establishes that $h_p$ pulls $q_t$ toward $q^*(p)$ from either side at every point. This pull produces monotone convergence to the unique limit $q^*(p)$ provided $|h_p'(q^*(p))| < 1$ for $p \in \{p_H, p_L\}$ — i.e., the update map's slope at the fixed point is below unity in magnitude, so a single period's adjustment does not overshoot past $q^*(p)$. Corollary~\ref{cor:slopebound} shows this holds automatically under Assumptions~\ref{as:f}--\ref{as:steadystate}, for every admissible $f,L$ and \emph{every} state $q$, not only at $q^*(p)$: $h_p'(q)\in(0,1)$ throughout, so $h_p$ is in fact strictly increasing on all of $\mathbb{R}$. Combined with $h_p(q^*(p))=q^*(p)$, this refines single-crossing to a no-overshoot property used repeatedly below: for $q<q^*(p)$, strict monotonicity of $h_p$ gives $h_p(q)<h_p(q^*(p))=q^*(p)$, so $h_p(q)\in(q,q^*(p))$; symmetrically $h_p(q)\in(q^*(p),q)$ for $q>q^*(p)$. (At the baseline calibration of Section~\ref{sec:sim} ($f(c)=a\sqrt{c}$, $L(q)=b/(q+1)$), this gives $\big(h_{p_H}'(q^*(p_H)), h_{p_L}'(q^*(p_L))\big) = (0.966, 0.939)$ at $\rho=0.30$; at the alternative pair of Section~\ref{sec:sim-functionalform} ($f(c)=ac^{1/3}$, $L(q)=be^{-q}$), both equal $0.978$ — consistent with, but no longer needed to establish, the general bound.)
+
+\emph{Case (a).} Suppose $\tau \leq q^*(p_L)$. Since $\rho<1$ (Assumption~\ref{as:rho}), Proposition~\ref{prop:steadystate} gives $q^*(p_L) < q^*(p_H)$, so $\tau<q^*(p_H)$ as well. If $q_0<\tau$, the firm is exposed and, by single-crossing under $p_H$, $q_t$ increases monotonically toward $q^*(p_H)>\tau$, so $q_t$ reaches $[\tau,\infty)$ within finitely many periods. (If $q_0\geq\tau$ already, this step is vacuous.) Once $q_t\geq\tau$ the firm is certified ($p(t)=p_L$) and the no-overshoot property established above gives: if $q_t\geq q^*(p_L)$, then $h_{p_L}(q_t)\in[q^*(p_L),q_t]\subseteq[\tau,\infty)$; if $\tau\leq q_t<q^*(p_L)$, then $h_{p_L}(q_t)\in(q_t,q^*(p_L))\subseteq[\tau,\infty)$. Either way $q_{t+1}\geq\tau$, so once certification is attained it is never lost, and monotone convergence under $p_L$ gives $q_t\to q^*(p_L)$.
+
+\emph{Case (c).} Suppose $\tau \geq q^*(p_H)$. We first show $q_0<\tau$ implies $q_t<\tau$ for every $t\geq0$, by induction. The base case is the hypothesis. If $q_t<\tau$, the firm is exposed and $q_{t+1}=h_{p_H}(q_t)$. If $q_t\leq q^*(p_H)$, the no-overshoot property gives $h_{p_H}(q_t)\leq q^*(p_H)\leq\tau$, with the first inequality strict unless $q_t=q^*(p_H)$, in which case $h_{p_H}(q_t)=q^*(p_H)\leq\tau$ still; either way $q_{t+1}\leq q^*(p_H)\leq\tau$, and in fact $q_{t+1}<\tau$ unless $\tau=q^*(p_H)$ and $q_t=q^*(p_H)$, which is excluded since $q_t<\tau=q^*(p_H)$ by the inductive hypothesis. If instead $q^*(p_H)<q_t<\tau$, the no-overshoot property gives $h_{p_H}(q_t)\in(q^*(p_H),q_t)$, so $q_{t+1}<q_t<\tau$. Either way $q_{t+1}<\tau$, completing the induction: the firm is exposed forever, and $q_t\to q^*(p_H)$ by monotone convergence under $p_H$, without $\tau$ ever being reached.
+
+If instead $q_0\geq\tau$, the firm starts certified ($p(t)=p_L$), and by single-crossing under $p_L$, $q_t$ decreases monotonically toward $q^*(p_L)<q^*(p_H)\leq\tau$ (the strict inequality $q^*(p_L)<q^*(p_H)$ again by Proposition~\ref{prop:steadystate}, since $\rho<1$); since this convergence is monotone to a limit strictly below $\tau$, $q_t$ falls below $\tau$ within finitely many periods, after which the case just established applies from that date onward. So from any $q_0$, the firm is certified for at most finitely many initial periods — never, if $q_0<\tau$ — and $q_t\to q^*(p_H)$ without certification recurring. At the boundary $\tau=q^*(p_H)$, the argument above applies verbatim (it only used $q^*(p_H)\leq\tau$), confirming this boundary belongs to Case (c) rather than Case (b): a firm starting at $q_0<\tau=q^*(p_H)$ never reaches $\tau$ in finite time, since the induction shows $q_t<\tau$ for every $t$.
+
+\emph{Case (b).} Suppose $q^*(p_L) < \tau < q^*(p_H)$.
+
+\emph{(i) Infinitely many crossings.} We claim the orbit switches between the exposed and certified regimes infinitely often. Suppose $q_{t_0}\geq\tau$ for some $t_0$. If $q_t\geq\tau$ for all $t\geq t_0$, then the firm is certified forever from $t_0$ on, $q_t$ follows $h_{p_L}$, and monotone convergence under $p_L$ gives $q_t\to q^*(p_L)<\tau$, contradicting $q_t\geq\tau$ for all $t$. So $q_t<\tau$ for some $t>t_0$: every certified run is followed by a return to exposure. Symmetrically, if $q_{t_0}<\tau$ and $q_t<\tau$ for all $t\geq t_0$, monotone convergence under $p_H$ gives $q_t\to q^*(p_H)>\tau$, a contradiction; so every exposed run is followed by certification. Hence the orbit crosses $\tau$ infinitely often in both directions.
+
+\emph{(ii) A trapping interval.} Let $I=[h_{p_L}(\tau),\,h_{p_H}(\tau))$. Since $\tau>q^*(p_L)$, the no-overshoot property gives $h_{p_L}(\tau)\in(q^*(p_L),\tau)$; since $\tau<q^*(p_H)$, it gives $h_{p_H}(\tau)\in(\tau,q^*(p_H))$. So $q^*(p_L)<h_{p_L}(\tau)<\tau<h_{p_H}(\tau)<q^*(p_H)$.
+
+\emph{Upper bound is forward-invariant.} Suppose $q_t<h_{p_H}(\tau)$. If $q_t<\tau$, then $q_{t+1}=h_{p_H}(q_t)<h_{p_H}(\tau)$ since $h_{p_H}$ is strictly increasing. If $q_t\geq\tau$, then since $q_t\geq\tau>q^*(p_L)$, single-crossing under $p_L$ gives $q_{t+1}=h_{p_L}(q_t)<q_t<h_{p_H}(\tau)$. Either way $q_{t+1}<h_{p_H}(\tau)$.
+
+\emph{Lower bound is forward-invariant.} Suppose $q_t\geq h_{p_L}(\tau)$. If $q_t\geq\tau$, then $q_{t+1}=h_{p_L}(q_t)\geq h_{p_L}(\tau)$ since $h_{p_L}$ is strictly increasing. If $q_t<\tau$, then since $q_t<\tau<q^*(p_H)$, single-crossing under $p_H$ gives $q_{t+1}=h_{p_H}(q_t)>q_t\geq h_{p_L}(\tau)$. Either way $q_{t+1}\geq h_{p_L}(\tau)$.
+
+\emph{Both bounds are eventually attained.} By (i), the orbit crosses from certified to exposed infinitely often; take such a crossing at time $t_1$, with $q_{t_1-1}\geq\tau$ and $q_{t_1}=h_{p_L}(q_{t_1-1})\geq h_{p_L}(\tau)$ (since $h_{p_L}$ is increasing and $q_{t_1-1}\geq\tau$). By forward-invariance of the lower bound, $q_t\geq h_{p_L}(\tau)$ for all $t\geq t_1$. Symmetrically, by (i) the orbit crosses from exposed to certified infinitely often; take such a crossing at time $t_2>t_1$, with $q_{t_2-1}<\tau$ and $q_{t_2}=h_{p_H}(q_{t_2-1})<h_{p_H}(\tau)$; by forward-invariance of the upper bound, $q_t<h_{p_H}(\tau)$ for all $t\geq t_2$. Hence $q_t\in I$ for all $t\geq t_2$.
+
+\emph{(iii) Long-run averages.} From (ii), for every $t\geq t_2$, $h_{p_L}(\tau)\leq q_t<h_{p_H}(\tau)$, so
+\[
+h_{p_L}(\tau) \;\leq\; \liminf_{N\to\infty}\frac1N\sum_{t<N}q_t \;\leq\; \limsup_{N\to\infty}\frac1N\sum_{t<N}q_t \;\leq\; h_{p_H}(\tau) \;<\; q^*(p_H).
+\]
+This establishes that the long-run, time-averaged quality is bounded, and strictly below $q^*(p_H)$, as claimed following the theorem statement.
+
+We refer to the pattern established in (i)--(iii) — eventual confinement to a bounded interval that the orbit crosses infinitely often — as \emph{cycling}. We do not establish, and the argument above does not require, that the orbit is eventually periodic in the stronger sense of exactly repeating: the map that applies $h_{p_H}$ below $\tau$ and $h_{p_L}$ at or above $\tau$ is a one-dimensional map with a single discontinuity and slope strictly between $0$ and $1$ on each piece, a class that includes maps with no periodic orbit at all (e.g.\ an irrational rotation number, with a Cantor-set attractor rather than a finite cycle); we have not determined which case applies at the calibrations used in Section~\ref{sec:sim}, and (iii) is the full strength of what is established analytically. The simulations in Sections~\ref{sec:sim-recurring}--\ref{sec:sim-functionalform} report what the orbit does numerically at those specific parameter values.
+
+In cases (a) and (b), $q^*(p_L) < q^*(p_H)$ whenever $\rho < 1$ follows directly from Proposition~\ref{prop:steadystate}, giving the strict long-run comparison stated above; in case (c) the firm is never certified, so the comparison is trivially an equality (both the model and its no-safe-harbor counterfactual converge to $q^*(p_H)$).
+\end{proof}
+
+\subsection{Proof of Proposition~\ref{prop:forwardlooking}}
+\begin{proof}
+Under constant $p$, the exact Bellman equation for \eqref{eq:objective} is $V(q) = pL(q) + \min_{c\geq0}\big[c+\beta V(q+f(c)-\delta)\big]$, with interior first-order condition $1+\beta V'(q+f(c)-\delta)f'(c) = 0$ characterizing the optimal policy $c^{\dagger}(q)$. Applying the envelope theorem to $V(q) = pL(q) + c^{\dagger}(q) + \beta V(q+f(c^{\dagger}(q))-\delta)$ — the term from differentiating through the optimal choice of $c^{\dagger}(q)$ vanishes because it is exactly the first-order condition, equal to zero at the optimum — gives
+\[
+V'(q) = pL'(q) + \beta V'\big(q+f(c^{\dagger}(q))-\delta\big).
+\]
+At a steady state $q^{\dagger}(p)$ where $c^{\dagger}(q^{\dagger}(p)) = c_\delta$, so that $f(c_\delta)=\delta$ (Assumption~\ref{as:steadystate}) leaves the state unchanged, this recursion is stationary in $q^{\dagger}(p)$:
+\[
+V'(q^{\dagger}(p)) = pL'(q^{\dagger}(p)) + \beta V'(q^{\dagger}(p)) \quad\Longrightarrow\quad V'(q^{\dagger}(p)) = \frac{p\,L'(q^{\dagger}(p))}{1-\beta}.
+\]
+Substituting into the first-order condition evaluated at the steady state, $1+\beta V'(q^{\dagger}(p))f'(c_\delta)=0$, gives
+\[
+\beta\,\frac{p}{1-\beta}\,\big|L'(q^{\dagger}(p))\big|\,f'(c_\delta) = 1,
+\]
+which is exactly the defining equation~\eqref{eq:steadystate} of $q^*(\cdot)$ with $p$ replaced by $p/(1-\beta)$. By the uniqueness clause of Assumption~\ref{as:steadystate}, $q^{\dagger}(p) = q^*(p/(1-\beta))$. Since $\beta\in(0,1)$ gives $p/(1-\beta) > p$, and $q^*(\cdot)$ is strictly increasing (Proposition~\ref{prop:steadystate}), $q^{\dagger}(p) > q^*(p)$.
+\end{proof}
+
+\subsection{Proof of Proposition~\ref{prop:imperfectobs}}
+\begin{proof}
+\emph{Existence and uniqueness, for every $\sigma>0$.} Define $g(q) \equiv f(c^*(q,p(q))) - \delta$, keeping both the direct dependence on the current state $q$ and the indirect dependence through $p(q)$ explicit throughout, rather than suppressing either. By Assumption~\ref{as:noisy}, $\pi$ is strictly increasing with $\pi(-\infty)=0$, $\pi(\infty)=1$, so $p(q) = p_H - \pi(q)(p_H-p_L)$ is continuous and strictly decreasing in $q$, with $p(q) \in (p_L,p_H)$ strictly for every finite $q$ (since $\pi(q)\in(0,1)$ strictly for finite $q$). By the chain rule,
+\[
+\frac{dg}{dq} = f'(c^*(q,p(q))) \left[ \underbrace{\frac{\partial c^*}{\partial q}(q,p(q))}_{\text{direct channel}} \;+\; \underbrace{\frac{\partial c^*}{\partial p}(q,p(q))\, p'(q)}_{\text{indirect channel}} \right].
+\]
+By Lemma~\ref{lem:cstar}, the direct channel $\partial c^*/\partial q < 0$; the indirect channel's factor $\partial c^*/\partial p > 0$, and $p'(q) < 0$, so the indirect channel is $(\partial c^*/\partial p)\,p'(q) < 0$ as well. With $f' > 0$, both channels therefore push the bracketed term, and hence $dg/dq$, strictly negative: $g$ is strictly decreasing on all of $\mathbb{R}$, regardless of which channel dominates numerically.
+
+We locate a sign change using a uniform bound rather than a limit, which avoids needing continuity to hold uniformly over an unbounded domain. Since $p(q)\in(p_L,p_H)$ strictly for every finite $q$, and $c^*(q,\cdot)$ is strictly increasing in $p$ (Lemma~\ref{lem:cstar}), $c^*(q,p_L) < c^*(q,p(q)) < c^*(q,p_H)$ for every finite $q$, and since $f$ is strictly increasing,
+\[
+f(c^*(q,p_L)) - \delta \;<\; g(q) \;<\; f(c^*(q,p_H)) - \delta \qquad \text{for every finite } q. \tag{$\ast$}
+\]
+Recall $q^*(p_L)$ and $q^*(p_H)$ are, by definition (Assumption~\ref{as:steadystate}), the states at which $c^*(q^*(p_L),p_L) = c^*(q^*(p_H),p_H) = c_\delta$. For $q \leq q^*(p_L)$: since $c^*(\cdot,p_L)$ is strictly decreasing in $q$ (Lemma~\ref{lem:cstar}), $c^*(q,p_L) \geq c^*(q^*(p_L),p_L) = c_\delta$, so $f(c^*(q,p_L)) \geq f(c_\delta) = \delta$; combined with the strict lower bound in $(\ast)$, $g(q) > f(c^*(q,p_L))-\delta \geq 0$, so $g(q) > 0$ for every $q \leq q^*(p_L)$. Symmetrically, for $q \geq q^*(p_H)$: $c^*(q,p_H) \leq c_\delta$, so $f(c^*(q,p_H)) \leq \delta$, and the strict upper bound in $(\ast)$ gives $g(q) < f(c^*(q,p_H))-\delta \leq 0$, so $g(q) < 0$ for every $q \geq q^*(p_H)$.
+
+By continuity, $g$ therefore has a root in $(q^*(p_L), q^*(p_H))$, and since $g$ is strictly decreasing on all of $\mathbb{R}$ the root $q^{**}(\sigma)$ is the unique steady state, for every $\sigma>0$ — no kink condition was used in this part. Single-crossing ($g(q) > 0$ for $q < q^{**}(\sigma)$, $g(q) < 0$ for $q > q^{**}(\sigma)$) rules out any other steady state.
+
+\emph{The limit $\sigma \to 0$, under the kink condition.} As $\sigma \to 0$, $\pi(q) \to \mathbf{1}\{q \geq \tau\}$ pointwise for $q \neq \tau$, so $p(q) \to p_H$ for every \emph{fixed} $q < \tau$ and $p(q) \to p_L$ for every fixed $q > \tau$ — this is an ordinary limit in $\sigma$ at a fixed $q$, not a limit in $q$, so no uniformity concern arises. Fix any $q < \tau$. By Lemma~\ref{lem:cstar}, $c^*(q,p_H) \geq c^*(\tau,p_H)$, so $f(c^*(q,p_H)) - \delta \geq f(c^*(\tau,p_H)) - \delta > 0$ (the kink condition); by continuity of $c^*(q,\cdot)$ in $p$ (Lemma~\ref{lem:cstar}) and $p(q)\to p_H$, this bound passes to the limit: $\liminf_{\sigma\to0} g(q) \geq f(c^*(\tau,p_H)) - \delta > 0$ for every fixed $q<\tau$. Symmetrically, $\limsup_{\sigma\to0} g(q) \leq f(c^*(\tau,p_L)) - \delta < 0$ for every fixed $q>\tau$. Since these bounds hold for $q$ arbitrarily close to $\tau$ on either side, and the unique root $q^{**}(\sigma)$ must lie strictly between a point where $g>0$ and a point where $g<0$, $q^{**}(\sigma) \to \tau$.
+
+\emph{Instability for small $\sigma$, under the logistic specification and the kink condition.} At the fixed point, $g(q^{**}(\sigma))=0$ means $f(c^*(q^{**},p^{**}))=\delta=f(c_\delta)$ where $p^{**}\equiv p(q^{**}(\sigma))$; since $f$ is strictly increasing, $c^*(q^{**},p^{**})=c_\delta$. Write $k(q) \equiv q + g(q)$ for the one-period update map, so $k'(q^{**}) = 1 + g'(q^{**})$, and split $g'(q^{**})$ into its two channels as above, each now evaluated at $c=c_\delta$, $q'\equiv q^{**}+f(c_\delta)-\delta=q^{**}$, and $p=p^{**}$:
+\[
+k'(q^{**}) \;=\; \underbrace{\Big[1+f'(c_\delta)\tfrac{\partial c^*}{\partial q}(q^{**},p^{**})\Big]}_{=\; h_{p^{**}}'(q^{**})} \;-\; A(\sigma)\,(p_H-p_L)\,\pi'(q^{**}(\sigma)),
+\]
+where $h_{p^{**}}'(q^{**}) \in (0,1)$ is exactly Corollary~\ref{cor:slopebound}'s slope bound, applied at $p=p^{**}>0$ (which holds at every $p>0$, not only at $p_H$ or $p_L$), and $A(\sigma) \equiv f'(c_\delta)\,\partial c^*/\partial p\,(q^{**},p^{**}) = -L'(q^{**})f'(c_\delta)^2 \,/\,\big(p^{**}\big[L''(q^{**})f'(c_\delta)^2 + L'(q^{**})f''(c_\delta)\big]\big) > 0$ by the same sign argument as Corollary~\ref{cor:slopebound} (numerator and the bracketed denominator term are both strictly positive under Assumptions~\ref{as:f}--\ref{as:L}), using $p'(q) = -(p_H-p_L)\pi'(q)$.
+
+For the logistic $\pi$, $\pi'(q) = \pi(q)(1-\pi(q))/\sigma$. Write $\theta(\sigma) \equiv \pi(q^{**}(\sigma))$. As $\sigma\to0$, $q^{**}(\sigma)\to\tau$ (shown above) and $p^{**}=p(q^{**}(\sigma)) \to P(\tau) \equiv 1/(\beta f'(c_\delta)|L'(\tau)|)$, the unique scrutiny level at which $\tau$ itself would be a steady state (Lemma~\ref{lem:cstar}'s continuity, applied to the defining equation of $q^{**}$). The kink condition is exactly $q^*(p_L)<\tau<q^*(p_H)$, and since $q^*(\cdot)$ is the strictly increasing inverse of $P(\cdot)$ (Proposition~\ref{prop:steadystate}), this is equivalent to $p_L < P(\tau) < p_H$. Hence $\theta(\sigma) = (p_H-p^{**})/(p_H-p_L) \to \theta_0 \equiv (p_H-P(\tau))/(p_H-p_L) \in (0,1)$ strictly, so $m_0 \equiv \theta_0(1-\theta_0) > 0$. Consequently $\pi'(q^{**}(\sigma)) = \theta(\sigma)(1-\theta(\sigma))/\sigma \to m_0/\sigma \to +\infty$ as $\sigma\to0^+$, while $A(\sigma) \to A_0 \equiv A$ evaluated at $q=\tau,p=P(\tau)$, a finite strictly positive limit (continuity of $A(\cdot)$ in $(q,p)$), and $h_{p^{**}}'(q^{**}) \to h_0 \in (0,1)$, also finite. So
+\[
+k'(q^{**}(\sigma)) \;=\; h_{p^{**}}'(q^{**}) - A(\sigma)(p_H-p_L)\,\frac{\theta(\sigma)(1-\theta(\sigma))}{\sigma} \;\longrightarrow\; -\infty \qquad \text{as } \sigma \to 0^+,
+\]
+since the subtracted term grows without bound while $h_{p^{**}}'(q^{**})$ stays bounded. Hence there is a $\sigma_0 > 0$ with $k'(q^{**}(\sigma)) < -1$, i.e.\ $|k'(q^{**}(\sigma))| > 1$, for every $\sigma < \sigma_0$: $q^{**}(\sigma)$ is a repelling fixed point.
+
+Repelling means exactly what is claimed. Since $c^*$ is $C^1$ in $(q,p)$ (Lemma~\ref{lem:cstar}) and $\pi$ is smooth, $k$ is continuously differentiable near $q^{**}(\sigma)$, so $|k'(q)|>1$ on some open interval $U \ni q^{**}(\sigma)$. For $q_t \in U$, the mean value theorem gives $q_{t+1}-q^{**}(\sigma) = k(q_t)-k(q^{**}(\sigma)) = k'(\xi)(q_t-q^{**}(\sigma))$ for some $\xi$ between $q_t$ and $q^{**}(\sigma)$; if that $\xi \in U$ as well, $|q_{t+1}-q^{**}(\sigma)| > |q_t-q^{**}(\sigma)|$. So as long as the orbit remains in $U$, its distance to $q^{**}(\sigma)$ strictly increases each period, and it must eventually leave $U$ unless $q_t=q^{**}(\sigma)$ exactly. A trajectory starting anywhere in $U$ other than $q^{**}(\sigma)$ itself therefore cannot converge to $q^{**}(\sigma)$, and since every trajectory that did converge to it would eventually enter $U$ and stay there, no trajectory other than the constant one at $q^{**}(\sigma)$ converges to it.
+\end{proof}

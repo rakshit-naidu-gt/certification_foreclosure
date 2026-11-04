@@ -1,0 +1,33 @@
+\section{Full Derivation of the Closed-Form Steady State}
+\label{app:derivation}
+
+This appendix gives the complete algebra behind the closed-form steady state $q^*(p)$ used in Section~\ref{sec:sim-recurring}, under the baseline calibration $f(c) = a\sqrt{c}$, $L(q) = b/(q+1)$. Every step follows directly from Assumption~\ref{as:steadystate}'s defining equation~\eqref{eq:steadystate}; nothing here is new relative to the main text, it is only spelled out at a finer grain.
+
+\paragraph{Step 1: the drift-offsetting investment $c_\delta$.} By definition, $c_\delta$ is the investment level satisfying $f(c_\delta) = \delta$. With $f(c) = a\sqrt{c}$,
+\[
+a\sqrt{c_\delta} = \delta \quad\Longrightarrow\quad \sqrt{c_\delta} = \frac{\delta}{a} \quad\Longrightarrow\quad c_\delta = \left(\frac{\delta}{a}\right)^2.
+\]
+
+\paragraph{Step 2: the marginal return $f'(c_\delta)$.} Differentiating $f(c)=a\sqrt{c}$ gives $f'(c) = a/(2\sqrt{c})$. Evaluating at $c=c_\delta$ and substituting $\sqrt{c_\delta}=\delta/a$ from Step 1,
+\[
+f'(c_\delta) = \frac{a}{2\sqrt{c_\delta}} = \frac{a}{2\,(\delta/a)} = \frac{a^2}{2\delta}.
+\]
+
+\paragraph{Step 3: the marginal harm $|L'(q)|$.} Differentiating $L(q) = b/(q+1)$ gives $L'(q) = -b/(q+1)^2$, so
+\[
+|L'(q)| = \frac{b}{(q+1)^2}.
+\]
+
+\paragraph{Step 4: substituting into the steady-state equation.} Assumption~\ref{as:steadystate}'s defining equation~\eqref{eq:steadystate}, $\beta\,p\,|L'(q^*(p))|\,f'(c_\delta) = 1$, becomes, using Steps 2 and 3,
+\[
+\beta\, p\, \frac{b}{(q^*(p)+1)^2}\, \frac{a^2}{2\delta} = 1.
+\]
+Rearranging to isolate $(q^*(p)+1)^2$,
+\[
+(q^*(p)+1)^2 = \frac{p\,\beta\,a^2\,b}{2\delta}.
+\]
+Since $q^*(p)+1 > 0$ on the domain where Assumption~\ref{as:L} holds ($q > -1$, per Assumption~\ref{as:L}'s remark on the calibration used here), the positive square root is the economically meaningful one:
+\[
+q^*(p) = \sqrt{\frac{p\,\beta\,a^2\,b}{2\delta}} - 1,
+\]
+which is the closed form used in Section~\ref{sec:sim-recurring} and evaluated there at $p=p_H=1.0$ and $p=p_L=\rho\,p_H$ for the reported figures.
