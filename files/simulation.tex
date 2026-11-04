@@ -1,6 +1,8 @@
 \section{Illustrative Simulation}
 \label{sec:sim}
 
+Code and data to reproduce all simulations and figures in this paper are available at \url{https://anonymous.4open.science/r/cert_fore/}.
+
 To confirm the kink condition (Corollary~\ref{cor:kink}) is not vacuous, we simulate the model under $f(c) = a\sqrt{c}$, $L(q) = b/(q+1)$, with $a = 0.30$, $b = 6.80$, $\beta = 0.95$, $\delta = 0.045$, $\tau = 0.80$, $p_H = 1.0$, $\rho = 0.30$ — chosen for tractability, not because the mechanism depends on them (Section~\ref{sec:sim-functionalform} confirms a structurally unrelated pair).
 
 At $q=\tau$, $c^*(p_H)=0.0818$ and $c^*(p_L)=0.0084$, giving $f(c^*(p_H))=0.0858$ and $f(c^*(p_L))=0.0275$: the kink condition $f(c^*(p_L))<\delta\leq f(c^*(p_H))$ holds. Figure~\ref{fig:qc}(a) plots the resulting $q_t$ against a no-discount ablation ($p$ held at $p_H$ throughout). Starting from $q_0=0.30$, both trajectories climb identically while exposed; the foreclosure trajectory is first certified at $t=8$, peaks at $q=0.825$, and declines to $q=0.481$ by $t=39$ despite never failing a subsequent audit, while the ablation continues to $q=1.348$. Figure~\ref{fig:qc}(b) shows investment falling by an order of magnitude ($0.085\to0.008$) in the single period spanning certification, with no recovery.
